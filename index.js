@@ -35,7 +35,12 @@ const examplePokemon = require("./pokemon.js");
 ];
  */
 
-function getAllPokemonNames() {}
+function getAllPokemonNames(pokemon) {
+  if (pokemon.length === 1){
+    throw "This array is not long enough"
+  }
+  return pokemon.map((poke) => poke.name) 
+}
 
 /**
  * checkIfAnyPokemonWeighsLessThan()
@@ -55,7 +60,9 @@ function getAllPokemonNames() {}
  *  checkIfAnyPokemonWeighsLessThan(pokemon, 18);
  *  //> false
  */
-function checkIfAnyPokemonWeighsLessThan() {}
+
+function checkIfAnyPokemonWeighsLessThan(pokemon, weight = 19) {return pokeWeight = pokemon.some((poke) => poke.weight < weight)}
+
 
 /**
  * findByName()
@@ -73,7 +80,10 @@ function checkIfAnyPokemonWeighsLessThan() {}
       // clefable
     };
  */
-function findByName() {}
+function findByName(pokemon, id) {
+
+return pokemon.find((poke) => poke.pokeId === id) || null;
+}
 
 /**
  * filterByType()
@@ -99,7 +109,11 @@ function findByName() {}
  *  filterByType(pokemon, "psychic")
  *  //> []
  */
-function filterByType() {}
+function filterByType(pokemon, type) {
+   let filteredPoke = pokemon.filter((poke) => {return poke.types.find((type1) => (type1.type.name.toLowerCase() === type.toLowerCase()))})
+return filteredPoke
+}
+
 
 /**
  * checkMinBaseExperience()
@@ -116,7 +130,9 @@ function filterByType() {}
  *  //>  false
  */
 
-function checkMinBaseExperience(pokemon, baseExperience) {}
+function checkMinBaseExperience(pokemon, baseExperience) {
+  return pokemon.every((poke) => poke.base_experience > baseExperience)
+}
 
 module.exports = {
   getAllPokemonNames,
